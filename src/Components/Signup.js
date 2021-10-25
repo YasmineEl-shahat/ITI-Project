@@ -26,7 +26,8 @@ class Signup extends Component {
         }
         
      }
-     componentDidMount() {
+    async componentDidMount() {
+        await AssureRegister(this.props);
         let loginData = JSON.parse(window.localStorage.getItem("loginData"));
         let RegisterData = JSON.parse(window.localStorage.getItem("RegisterData"));
         if(loginData || RegisterData) this.props.history.push("/");
