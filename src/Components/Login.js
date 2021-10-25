@@ -9,22 +9,27 @@ class Login extends Component {
         error:""
      }
      
-     async componentWillMount(){
-        await AssureLogin(this.props);
-        if(this.props.location.state){
-            this.setState({
-                error: this.props.location.state.error
-            })
+    async componentWillMount(){
+    await AssureLogin(this.props);
+    if(this.props.location.state){
+        this.setState({
+            error: this.props.location.state.error
+        })
+    }
+    
+    }
+    componentDidMount() {
+        let loginData = JSON.parse(window.localStorage.getItem("loginData"));
+        let RegisterData = JSON.parse(window.localStorage.getItem("RegisterData"));
+        if(loginData || RegisterData) this.props.history.push("/");
+     }
+    saveLogin= () => {
+        let loginData = {
+            userName : this.state.userName,
+            password: this.state.password
         }
-        
-     }
-     saveLogin= () => {
-         let loginData = {
-             userName : this.state.userName,
-             password: this.state.password
-         }
-         window.localStorage.setItem("loginData", JSON.stringify(loginData));
-     }
+        window.localStorage.setItem("loginData", JSON.stringify(loginData));
+    }
     render() { 
         return (
             

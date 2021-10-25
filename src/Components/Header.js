@@ -47,8 +47,8 @@ let Header = (props) =>{
                     <button  onClick={showCart} className="btn  btn-primary" >Cart <i class="fas fa-shopping-cart  "></i><span className="cart-items">{cartCount}</span></button>
                   <li className="nav-item">
                    {!(loginData || RegisterData) && <Link to="/login"><i class="fas fa-user text-white"></i></Link>}
-                   {loginData && <button  className="btn  btn-black text-white userbtn">Hello, {loginData.userName}</button>}
-                   {RegisterData && <button  className="btn  btn-black text-white userbtn">Hello, {RegisterData.userName}</button>}
+                   {loginData && <button  className="btn  btn-black text-white userbtn">Hello, {loginData.userName}</button> ||
+                   RegisterData && <button  className="btn  btn-black text-white userbtn">Hello, {RegisterData.userName}</button>}
                    {(loginData || RegisterData) &&<button onClick={() => {Logout(props.props)}} className="box">Sign out</button>}
                   </li>
                   <li className="nav-item">
